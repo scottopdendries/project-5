@@ -1,0 +1,24 @@
+.header-container {
+  height: 50px;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopping-cart {
+  display: flex;
+  align-items: center;
+}
+.shopping-cart-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+}
+.shopping-cart-icon {
+  font-size: 2em; 
+}
