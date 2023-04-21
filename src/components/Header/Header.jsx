@@ -7,6 +7,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 function Header(props) {
   
   // State (special variable)
+  // ** consider changing 'setCount' to 'updateCount'
+
   const [count, setCount] = React.useState(0)
 
   const handleIncrement = () => {
@@ -21,6 +23,8 @@ function Header(props) {
       <h1>{props.username}</h1>
       <div className="shopping-cart">
         {count > 0 && <p className="shopping-cart-counter">{count}</p>}
+
+        {/* placeholders. these will be used to test cart functionality */}
         <button onClick={handleIncrement}>Inc</button>
         <button onClick={handleDecrement}>Dec</button>
         <button onClick={handleClear}>Clear</button>

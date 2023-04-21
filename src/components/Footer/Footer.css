@@ -1,0 +1,14 @@
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--grey);
+  background-color: var(--blue);
+}
+
+.contact-btn{
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--grey);
+  border: none;
+}

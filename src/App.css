@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+  --grey: #CBD3D8;
+  --blue: #3A4895;
+  --red: #E25822;
+}
