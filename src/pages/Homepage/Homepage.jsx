@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import "./HomePage.css"
 import axios from 'axios'
 import ProductCard from '../../components/ProductCard/ProductCard'
-// import Search from '../../components/Search/Search'
+import Search from '../../components/Search/Search'
 
 function HomePage() {
 
@@ -24,44 +24,60 @@ function HomePage() {
           .catch(err => console.log(err))
       }, []  // runs only once when page loads
     )
-
-
   
-    const [filter, setFilter] = useState('all')
+    const [filter, setFilter] = useState('All')
 
     const filters = ["All", "Electronics", "Jewelery", " Men's Clothing", "Women's Clothing"]
 
+    // REVISION
     const changeFilter = (filter) => {
-      // change the filter to the parameter
-      console.log(filter)
-      setFilter(filter)
+      console.log('Button clicked:', filter);
+
+      let url;
+      switch (filter) {
+        case 'Electronics':
+          url = 'https://fakestoreapi.com/products/category/electronics';
+          break;
+        case 'Jewelery':
+          url = 'https://fakestoreapi.com/products/category/jewelery';
+          break;
+        case "Men's Clothing":
+          url = 'https://fakestoreapi.com/products/category/men%27s%20clothing';
+          break;
+        case "Women's Clothing":
+          url = 'https://fakestoreapi.com/products/category/women%27s%20clothing';
+          break;
+        default:
+          url = 'https://fakestoreapi.com/products';
+      }
+      axios.get(url)
+        .then(res => {
+          setProducts(res.data);
+          setFilter(filter);
+        })
+        .catch(err => console.log(err));
     }
 
-    // https://fakestoreapi.com/products/category/electronics
-    // https://fakestoreapi.com/products/category/jewelery
-    // https://fakestoreapi.com/products/category/men%27s%20clothing
-    // https://fakestoreapi.com/products/category/women%27s%20clothing
-
-
-
-  return (
+  // REVISION
+  return(
     <div className="home-container">
-        <div className="filter-and-search">
-          <div className="filter-container">
-            {
-              filters.map(item=><button onClick={()=>setFilter(item)}>{item}</button>)
-            }
-          </div>
-          {/* <Search setProducts={SetProducts} /> */}
+      <div className="filter-and-search">
+        <div className ="filter-container">
+          {filters.map((item)=>(
+            <button key={item} onClick={ ()=> changeFilter(item)}> 
+              {item}
+            </button>
+          ))}
         </div>
-        <div className="products-container">
-            {
-                products.map(item=><ProductCard key={item.id} product={item} />)
-                // products.map(item=><p key={item.id}>{item.name}</p>)
-            }
-        </div>
+        {<Search setProducts={setProducts} />}
+      </div>
+      <div className="product-container">
+        {products.map((item)=>(
+          < ProductCard key={item.id} product={item} />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
 export default HomePage

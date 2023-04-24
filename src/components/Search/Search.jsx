@@ -19,8 +19,21 @@ function Search(setProducts) {
         // change what is in products
         setProducts(res.data.results)
       })
-      .catch(err => console.log(err))
-    }
+      // .catch(err => console.log(err))
+      .catch(err => {
+        //give error message if not found
+        if (err.response.status === 404){
+          alert(`There is no product named ${query}`)
+        }
+        else{
+          console.log(err)
+        }
+      })
+
+      //clear textbox
+      setQuery('')
+  }
+    
 
   return (
     <form className="search-container" onSubmit={handleSearch}>
