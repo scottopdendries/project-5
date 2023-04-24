@@ -69,9 +69,9 @@ function HomePage() {
             </button>
           ))}
         </div>
-        {<Search setProducts={setProducts} />}
+        <Search setProducts={setProducts} />
       </div>
-      <div className="product-container">
+      <div className="products-container">
         {products.map((item)=>(
           < ProductCard key={item.id} product={item} />
         ))}

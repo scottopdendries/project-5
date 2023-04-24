@@ -2,7 +2,7 @@ import React from 'react'
 import './Search.css'
 import axios from 'axios'
 
-function Search(setProducts) {
+function Search({setProducts}) {
 
     // need state to store user input
     const [query, setQuery] = React.useState('')
@@ -33,13 +33,12 @@ function Search(setProducts) {
       //clear textbox
       setQuery('')
   }
-    
+
 
   return (
     <form className="search-container" onSubmit={handleSearch}>
-      <input  type="text"
+      <input  type="text" value={query}
               onChange={(e)=>setQuery(e.target.value)}
-      
               placeholder="Search all products" />
     </form>
   )
