@@ -8,7 +8,6 @@ function Header(props) {
   
   // State (special variable)
   // ** consider changing 'setCount' to 'updateCount'
-
   const [count, setCount] = React.useState(0)
 
   const handleIncrement = () => {
@@ -20,7 +19,7 @@ function Header(props) {
 
   return (
     <div className="header-container">
-      <h1>{props.username}</h1>
+      <a href="/" className="home-btn">{props.username}</a>
       <div className="shopping-cart">
         {count > 0 && <p className="shopping-cart-counter">{count}</p>}
 

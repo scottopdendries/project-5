@@ -6,9 +6,7 @@
   background-color: var(--blue);
 }
 
-.contact-btn{
-  cursor: pointer;
-  background-color: transparent;
+.contact-btn {
   color: var(--grey);
-  border: none;
+  text-decoration:none;
 }

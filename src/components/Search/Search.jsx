@@ -4,24 +4,24 @@ import axios from 'axios'
 
 function Search({setProducts}) {
 
-    // need state to store user input
+    // use state to store user input
     const [query, setQuery] = React.useState('')
 
     const handleSearch = (e) => {
-      // stops default form action to refresh page
+      // prevents default form action (page refresh)
       e.preventDefault();
 
       console.log(query)
-      //make api call to get products that match
+      // makes API call to get products that match
       axios.get(`https://fakestoreapi.com/products/?title=${query}`)
       .then(res =>{
         console.log(res.data.results)
-        // change what is in products
+        // changes what is in products
         setProducts(res.data.results)
       })
       // .catch(err => console.log(err))
       .catch(err => {
-        //give error message if not found
+        // gives error message if not found
         if (err.response.status === 404){
           alert(`There is no product named ${query}`)
         }
@@ -30,7 +30,7 @@ function Search({setProducts}) {
         }
       })
 
-      //clear textbox
+      // clears textbox
       setQuery('')
   }
 

@@ -1,8 +1,13 @@
 import { useState } from 'react'
+import {BrowserRouter, Routes, Route} from 
+'react-router-dom'
 
 import './App.css'
 import Header from './components/Header/Header'
 import HomePage from './pages/HomePage/HomePage'
+import ProductDetail from './pages/ProductDetail/ProductDetail'
+import ContactUs from './pages/ContactUs/ContactUs'
+
 import Footer from './components/Footer/Footer'
 
 function App() {
@@ -11,11 +16,17 @@ function App() {
   // const title = props.title
 
   return (
-    <div className="App">
+    <BrowserRouter>
       <Header username={storeName} />
-      <HomePage />
+
+      <Routes>
+        <Route path='/' element={<HomePage />}/>
+        <Route path='/details/:productId' element={<ProductDetail />}/>
+        <Route path='/contactus' element={<ContactUs />}/>
+      </Routes>
+
       <Footer />
-    </div>
+    </BrowserRouter>
   )
 }
 

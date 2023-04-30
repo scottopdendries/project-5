@@ -10,7 +10,7 @@ function Footer() {
         <div>Made with
         <AiFillHeart className="heart-icon" />
         by mimo</div>
-        <button className="contact-btn">Contact Us</button>
+        <a href="/contactus" className="contact-btn">Contact Us</a>
     </div>
   )
 }

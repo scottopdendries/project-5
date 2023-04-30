@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+.home-btn {
+  color: var(--black);
+  text-decoration:none;
+}
+
 .shopping-cart {
   display: flex;
   align-items: center;

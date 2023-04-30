@@ -1,35 +1,35 @@
 import React, {useEffect, useState} from 'react'
-import "./HomePage.css"
+import './HomePage.css'
 import axios from 'axios'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Search from '../../components/Search/Search'
 
 function HomePage() {
 
-  // creates state to store products
+  // Uses state to store products
   const[products, setProducts] = useState([])
 
-  // makes api call when the page loads
+  // Retrieves API data when the page loads
   useEffect(
     ()=>{
       console.log('homepage loaded')
-        // uses axios to make api call
+        // Uses axios to make API call
         axios.get(`https://fakestoreapi.com/products`)
         .then(res=>{
           console.log(res.data)
-          // stores data in state
+          // Stores data in state
           setProducts(res.data)
           }
           )
           .catch(err => console.log(err))
-      }, []  // runs only once when page loads
+      }, []  // Runs only once when page loads
     )
   
     const [filter, setFilter] = useState('All')
 
     const filters = ["All", "Electronics", "Jewelery", " Men's Clothing", "Women's Clothing"]
 
-    // REVISION
+    // Filter
     const changeFilter = (filter) => {
       console.log('Button clicked:', filter);
 
@@ -58,7 +58,6 @@ function HomePage() {
         .catch(err => console.log(err));
     }
 
-  // REVISION
   return(
     <div className="home-container">
       <div className="filter-and-search">
