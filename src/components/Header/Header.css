@@ -1,14 +1,18 @@
 .header-container {
-  height: 50px;
-  /* background-color: var(--grey); */
+  /* background-color: var(--white); */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
+  margin: 20px 0;
+  padding: 0 35px;
 }
 
 .home-btn {
-  color: var(--black);
+  color: var(--blue);
   text-decoration:none;
+  font-weight: 700;
+  font-size: 24px;
 }
 
 .shopping-cart {

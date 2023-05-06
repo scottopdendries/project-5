@@ -31,15 +31,13 @@ function ProductDetail() {
     <div className="details-container">
       <img src={product?.image} />
       <div className="container-info">
-        <p>Name: {product?.title}</p>
-        <p>Price: {product?.price}</p>
+        <p>{product?.title}</p>
+        <p>{product?.price}€</p>
+        {/* <p>{product?.price.toFixed(2)}€</p> */}
         <p>Description</p>
         <p>{product?.description}</p>
         <button>Add to Cart</button>
 
-        {/* <p>Gender: {product?.gender}</p>
-        <p>Location: {character?.location?.name}</p>
-        <p>Species: {character?.species}</p> */}
       </div>
     </div>
   )

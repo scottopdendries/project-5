@@ -2,18 +2,18 @@
   height:60px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .search-container input{
-  border:none;
-  padding:8px 16px;
-  width:50%;
+  border: 3px solid var(--blue);
   border-radius: 8px;
-  background-color: var(--primary-bg);
-  color:var(--white);
+  padding:8px 16px;
+  color:var(--blue);
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
 }
-
 .search-container input::placeholder{
-  color:var(--white);
+  color:var(--blue);
 }

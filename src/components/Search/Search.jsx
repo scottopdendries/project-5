@@ -39,7 +39,7 @@ function Search({setProducts}) {
     <form className="search-container" onSubmit={handleSearch}>
       <input  type="text" value={query}
               onChange={(e)=>setQuery(e.target.value)}
-              placeholder="Search all products" />
+              placeholder="Search products" />
     </form>
   )
 }

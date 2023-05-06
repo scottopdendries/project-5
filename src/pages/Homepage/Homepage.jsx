@@ -13,7 +13,7 @@ function HomePage() {
   useEffect(
     ()=>{
       console.log('homepage loaded')
-        // Uses axios to make API call
+        // API call
         axios.get(`https://fakestoreapi.com/products`)
         .then(res=>{
           console.log(res.data)
@@ -27,7 +27,7 @@ function HomePage() {
   
     const [filter, setFilter] = useState('All')
 
-    const filters = ["All", "Electronics", "Jewelery", " Men's Clothing", "Women's Clothing"]
+    const filters = ["All", "Electronics", "Jewelery", "Men's Clothing", "Women's Clothing"]
 
     // Filter
     const changeFilter = (filter) => {
