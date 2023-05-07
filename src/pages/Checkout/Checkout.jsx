@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import './Checkout.css'
+import { Link } from 'react-router-dom'
 import { CartContext } from '../../contexts/CartContext'
 import { ThemeContext } from '../../contexts/ThemeContext'
 
@@ -8,8 +9,8 @@ import { IoTrashOutline } from "react-icons/io5"
 
 function Checkout(product) {
 
-  // global state
-  // NOTE: {}, not []
+  // Global states
+  const {darkMode, setDarkMode} = useContext(ThemeContext)
   const {cart, removeProduct} = useContext(CartContext)
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0).toFixed(2);
@@ -37,8 +38,9 @@ function Checkout(product) {
   
 
   return (
-    <div className="checkout-container">
-      <div className="checkout-headers">
+    // <div className="checkout-container">
+    <div className={darkMode?"checkout-container checkout-dark" : "checkout-container"}>
+      <div className={darkMode?"checkout-headers checkout-headers-dark" : "checkout-headers"}>
         <p>Item</p>
         <p>Title</p>
         <p>Price</p>
@@ -46,8 +48,7 @@ function Checkout(product) {
         <p>Remove</p>
       </div>
       
-      {/* add background-color? */}
-      <div className="checkout-products">
+      <div className={darkMode?"checkout-products checkout-products-dark" : "checkout-products"}>
         {
         cart.map(item => (
           <div key={item.id} className="checkout-product">
@@ -57,9 +58,8 @@ function Checkout(product) {
             <p>1</p>
             <button
               onClick={() => removeProduct(item.id)}
-               className="checkout-remove"
-              >
-              <IoTrashOutline className="checkout-remove" />
+              className={darkMode?"checkout-remove checkout-remove-dark" : "checkout-remove"}>
+              <IoTrashOutline />
             </button>
           </div>
         ))
@@ -68,45 +68,31 @@ function Checkout(product) {
 
 
 
-      <div className="checkout-total">
+      <div className={darkMode?"checkout-total checkout-total-dark" : "checkout-total"}>
         <p>Total: {totalPrice}€</p>
         <button className="checkout-button"
-                onClick={()=>setIsOpen(true)}>Checkout</button>     
+          onClick={()=>setIsOpen(true)}>Checkout
+        </button>
       </div>
 
       <Modal
         isOpen={isOpen}
         
         onRequestClose={()=>setIsOpen(false)}
-        style={customStyles}
-        contentLabel="Contact Us Modal"
+        className="modal-container"
+        contentLabel="Checkout Modal"
         >
-        <div className="modal-header">
-          <h2>Contact Us</h2>
-          <button className="modal-close-btn"
-                  onClick={()=>setIsOpen(false)}>X</button>
+        <div className="modal-text">
+          <p>Your Order was successful!</p>
+          <p>Check your email for the order confirmation. Thank you for shopping with Fake Store!</p>
+          <button className="modal-button">
+            <Link to="/" >Return to Home</Link>
+          </button>
         </div>
-        <form>
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
-
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-
-          <label htmlFor="message">Message</label>
-          <textarea id="message" rows="4"></textarea>
-          <button type="submit">Send</button>
-        </form>
       </Modal>
 
     </div>
   )
 }
-
-// function Checkout() {
-//   return (
-//     <div>Checkout</div>
-//   )
-// }
 
 export default Checkout

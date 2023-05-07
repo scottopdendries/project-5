@@ -1,14 +1,41 @@
-.contact-background {
-  background-color: var(--grey);
-  min-height: 90vh;
+.contact-background, .contact-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.contact-background {
+  background-color: var(--grey);
+  min-height: 90vh;
+}
+.contact-dark {
+  background-color: var(--black);
+  color: var(--grey);
+}
+
+.contact-background h1 {
+  margin-bottom: 15px;
+}
+.contact-container input, .contact-container textarea {
+  border: 3px solid var(--blue);
+  border-radius: 25px;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+}
+.contact-container-dark input, .contact-container-dark textarea {
+  background-color: var(--dark-grey);
+}
+
+.contact-button {
+  background-color: var(--yellow);
+  border: 2px solid var(--blue);
+  width: 80px;
+  margin: 0 10px;
+  border-radius: 25px;
+}
+.contact-button:hover{
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
 }

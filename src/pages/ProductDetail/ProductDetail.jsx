@@ -9,8 +9,9 @@ import { ThemeContext } from '../../contexts/ThemeContext'
 
 function ProductDetail() {
   
+  // Global states
+  const {darkMode, setDarkMode} = useContext(ThemeContext)
   const {cart, addProduct, removeProduct} = useContext (CartContext)
-  // const {darkMode, setDarkMode} = useContext(ThemeContext)
 
   // creates state
   const [isCart, setIsCart] = React.useState(false)
@@ -48,26 +49,24 @@ function ProductDetail() {
   )
 
   return (
-    <div className="details-container">
+    <div className={darkMode?"details-container details-dark" : "details-container"}>
       <div className="details-product">
         <img src={product?.image} />
         <div className="details-info">
-          <p style={{ fontWeight: 700, fontSize: '24px', paddingBottom: '20px' }}>{product?.title}</p>
-          {/* <p style={{ fontWeight: 600, fontSize: '24px', paddingBottom: '20px' }}>{product?.price.toFixed(2)}€</p> */}
-          <p style={{ fontWeight: 600, fontSize: '20px' }}>Description</p>
-          <p style={{ fontWeight: 400, fontSize: '16px', paddingBottom: '20px' }}>{product?.description}</p>
-          {/* <button>Add to Cart</button> */}
+          <p className="details-title">
+            {product?.title}
+          </p>
+          {/* <p className="details-price">{product?.price.toFixed(2)}€</p> */}
+          <p className="details-description-header">
+            Description
+          </p>
+          <p className="details-description-text">
+            {product?.description}
+          </p>
           <button
             onClick={isCart ? () => removeProduct(product.id) : () => addProduct(product)}>
             {isCart ? "Remove" : "Add to cart"}
           </button>
-
-          {/* <button
-              onClick={() => removeProduct(item.id)}
-               className="checkout-remove"
-              >
-              <IoTrashOutline className="checkout-remove" />
-            </button> */}
 
         </div>
       </div>
