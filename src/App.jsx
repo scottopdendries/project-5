@@ -16,7 +16,6 @@ import CartContextProvider, { CartContext } from './contexts/CartContext'
 function App() {
 
   const storeName = "Fake Store"
-  // const title = props.title
 
   return (
     <BrowserRouter>

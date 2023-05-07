@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import './HomePage.css'
 import axios from 'axios'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Search from '../../components/Search/Search'
+import { ThemeContext } from '../../contexts/ThemeContext'
 
 function HomePage() {
 
+  // Global state
+  const {darkMode, setDarkMode} = useContext(ThemeContext)
+
   // Uses state to store products
-  const[products, setProducts] = useState([])
+  const [products, setProducts] = useState([])
 
   // Retrieves API data when the page loads
   useEffect(
@@ -25,41 +29,62 @@ function HomePage() {
       }, []  // Runs only once when page loads
     )
   
-    const [filter, setFilter] = useState('All')
+    // const [filter, setFilter] = useState('All')
 
     const filters = ["All", "Electronics", "Jewelery", "Men's Clothing", "Women's Clothing"]
 
     // Filter
     const changeFilter = (filter) => {
       console.log('Button clicked:', filter);
-
-      let url;
-      switch (filter) {
-        case 'Electronics':
-          url = 'https://fakestoreapi.com/products/category/electronics';
-          break;
-        case 'Jewelery':
-          url = 'https://fakestoreapi.com/products/category/jewelery';
-          break;
-        case "Men's Clothing":
-          url = 'https://fakestoreapi.com/products/category/men%27s%20clothing';
-          break;
-        case "Women's Clothing":
-          url = 'https://fakestoreapi.com/products/category/women%27s%20clothing';
-          break;
-        default:
-          url = 'https://fakestoreapi.com/products';
-      }
+    
+      const filterUrls = {
+        Electronics: 'https://fakestoreapi.com/products/category/electronics',
+        Jewelery: 'https://fakestoreapi.com/products/category/jewelery',
+        "Men's Clothing": 'https://fakestoreapi.com/products/category/men%27s%20clothing',
+        "Women's Clothing": 'https://fakestoreapi.com/products/category/women%27s%20clothing',
+        default: 'https://fakestoreapi.com/products'
+      };
+      const url = filterUrls[filter] || filterUrls.default;
+    
       axios.get(url)
         .then(res => {
           setProducts(res.data);
-          setFilter(filter);
+          // setFilter(filter);
         })
         .catch(err => console.log(err));
     }
+    
+    // const changeFilter = (filter) => {
+    //   console.log('Button clicked:', filter);
+
+    //   let url;
+    //   switch (filter) {
+    //     case 'Electronics':
+    //       url = 'https://fakestoreapi.com/products/category/electronics';
+    //       break;
+    //     case 'Jewelery':
+    //       url = 'https://fakestoreapi.com/products/category/jewelery';
+    //       break;
+    //     case "Men's Clothing":
+    //       url = 'https://fakestoreapi.com/products/category/men%27s%20clothing';
+    //       break;
+    //     case "Women's Clothing":
+    //       url = 'https://fakestoreapi.com/products/category/women%27s%20clothing';
+    //       break;
+    //     default:
+    //       url = 'https://fakestoreapi.com/products';
+    //   }
+    //   axios.get(url)
+    //     .then(res => {
+    //       setProducts(res.data);
+    //       setFilter(filter);
+    //     })
+    //     .catch(err => console.log(err));
+    // }
 
   return(
-    <div className="home-container">
+    // <div className="home-container">
+    <div className={darkMode?"home-container home-dark" : "home-container"}>
       <div className="filter-and-search">
         <div className ="filter-container">
           {filters.map((item)=>(
@@ -68,7 +93,7 @@ function HomePage() {
             </button>
           ))}
         </div>
-        <Search setProducts={setProducts} />
+        <Search className="search" setProducts={setProducts} />
       </div>
       <div className="products-container">
         {products.map((item)=>(

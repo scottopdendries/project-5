@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
 import './ProductCard.css'
 import {Link} from 'react-router-dom'
-import { ThemeContext } from '../../contexts/ThemeContext'
 import { CartContext } from '../../contexts/CartContext';
-
-import { IoHeartCircleSharp } from "react-icons/io5";
-import { createContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext'
 
 // Capitalizes the first letter of a word
 function capitalizeFirstLetter(string) {
@@ -13,9 +10,10 @@ function capitalizeFirstLetter(string) {
 }
 
 function ProductCard({product}) {
-  // use global state
-  // NOTE: {}, not []
+
+  // Global states
   const {cart, addProduct, removeProduct} = useContext (CartContext)
+  const {darkMode, setDarkMode} = useContext(ThemeContext)
 
 
   // creates state
@@ -30,7 +28,8 @@ function ProductCard({product}) {
   )
 
   return (
-    <div className="product-card">
+    // <div className="product-card">
+    <div className={darkMode?"product-card product-card-dark" : "product-card"}>
       <img src={product.image} />
 
       <div>

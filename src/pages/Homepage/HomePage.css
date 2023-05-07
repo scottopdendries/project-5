@@ -3,11 +3,19 @@
   min-height: 90vh;
   padding: 0 30px;
 }
+.home-dark {
+  background-color: var(--black);
+}
 
 .filter-and-search {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.filter-container {
+  display: flex;
+  align-items: flex;
 }
 
 .filter-container button {
