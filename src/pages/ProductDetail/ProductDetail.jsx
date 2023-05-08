@@ -9,34 +9,24 @@ import { ThemeContext } from '../../contexts/ThemeContext'
 
 function ProductDetail() {
   
+  // Gets the ID of the product from the URL
+  const {productId} = useParams()
+
   // Global states
   const {darkMode, setDarkMode} = useContext(ThemeContext)
   const {cart, addProduct, removeProduct} = useContext (CartContext)
 
-  // creates state
-  const [isCart, setIsCart] = React.useState(false)
-
-  // Checks if the product is in cart. Uses find to return the element, and if found, is considered "true".
-  // Returns 'undefined' if not, which is considered "false"
-  React.useEffect(
-    ()=> {
-      setIsCart(cart.find(item=>item.id === product.id))
-    }, [cart]
-  )
-
-
-  // Gets the ID of the product from the URL
-  const {productId} = useParams()
+  // Creates state
+  const [isCart, setIsCart] = React.useState(true)
 
   // Uses state to hold API data
   const [product, setProduct] = React.useState('')
-
-  // Example: https://fakestoreapi.com/products/3
-
-  // Retrieves API data when the page loads
-  React.useEffect(
+  
+   // Retrieves API data when the page loads
+   React.useEffect(
     ()=>{
       // Uses axios to make API call
+      console.log("loaded")
       axios.get(`https://fakestoreapi.com/products/${productId}`)
       .then(res=>{
         console.log(res.data)
@@ -44,9 +34,26 @@ function ProductDetail() {
         setProduct(res.data)
       })
       .catch(err => console.log(err))
-
+      // console.log(typeof(productId))
+      // console.log("a", cart.find(item=>item.id == productId))
+      // setIsCart(cart.find(item=>item.id == productId))
+      
     }, [] // Runs only once when page loads
   )
+  
+  // Checks if the product is in cart. Uses find to return the element, and if found, is considered "true".
+  // Returns 'undefined' if not, which is considered "false"
+  React.useEffect(()=> {
+    console.log("check cart", productId)
+    // check if this product is in the cart
+    console.log(cart)
+      setIsCart(cart.find(item=>item.id == productId))
+    }, [cart]
+  )
+
+  // Example: https://fakestoreapi.com/products/3
+
+
 
   return (
     <div className={darkMode?"details-container details-dark" : "details-container"}>
@@ -64,7 +71,7 @@ function ProductDetail() {
             {product?.description}
           </p>
           <button
-            onClick={isCart ? () => removeProduct(product.id) : () => addProduct(product)}>
+            onClick={isCart ? () => removeProduct(productId) : () => addProduct(product)}>
             {isCart ? "Remove" : "Add to cart"}
           </button>
 

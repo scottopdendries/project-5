@@ -2,7 +2,6 @@ import React, {useEffect, useState, useContext} from 'react'
 import './HomePage.css'
 import axios from 'axios'
 import ProductCard from '../../components/ProductCard/ProductCard'
-import Search from '../../components/Search/Search'
 import { ThemeContext } from '../../contexts/ThemeContext'
 
 function HomePage() {
@@ -83,7 +82,6 @@ function HomePage() {
     // }
 
   return(
-    // <div className="home-container">
     <div className={darkMode?"home-container home-dark" : "home-container"}>
       <div className="filter-and-search">
         <div className ="filter-container">
@@ -93,10 +91,10 @@ function HomePage() {
             </button>
           ))}
         </div>
-        <Search className="search" setProducts={setProducts} />
+
       </div>
       <div className="products-container">
-        {products.map((item)=>(
+        {products?.map((item)=>(
           < ProductCard key={item.id} product={item} />
         ))}
       </div>

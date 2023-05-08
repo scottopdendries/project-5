@@ -12,23 +12,20 @@ function capitalizeFirstLetter(string) {
 function ProductCard({product}) {
 
   // Global states
-  const {cart, addProduct, removeProduct} = useContext (CartContext)
   const {darkMode, setDarkMode} = useContext(ThemeContext)
-
+  const {cart, addProduct, removeProduct} = useContext (CartContext)
 
   // creates state
   const [isCart, setIsCart] = React.useState(false)
 
   // Checks if the product is in cart. Uses find to return the element, and if found, is considered "true".
   // Returns 'undefined' if not, which is considered "false"
-  React.useEffect(
-    ()=> {
+  React.useEffect(()=> {
       setIsCart(cart.find(item=>item.id === product.id))
     }, [cart]
   )
 
   return (
-    // <div className="product-card">
     <div className={darkMode?"product-card product-card-dark" : "product-card"}>
       <img src={product.image} />
 

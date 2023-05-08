@@ -34,7 +34,7 @@ export default function CartContextProvider(props){
   const removeProduct = (productId) => {
     console.log('remove', productId)
     // Uses filter to keep all values that don't match
-    let newCart = cart.filter(item=>item.id !== productId)
+    let newCart = cart.filter(item=>item.id != productId)
     // Updates state
     setCart(newCart)
     // Updates local storage
