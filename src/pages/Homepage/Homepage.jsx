@@ -83,7 +83,6 @@ function HomePage() {
 
   return(
     <div className={darkMode?"home-container home-dark" : "home-container"}>
-      <div className="filter-and-search">
         <div className ="filter-container">
           {filters.map((item)=>(
             <button key={item} onClick={ ()=> changeFilter(item)}> 
@@ -91,8 +90,6 @@ function HomePage() {
             </button>
           ))}
         </div>
-
-      </div>
       <div className="products-container">
         {products?.map((item)=>(
           < ProductCard key={item.id} product={item} />

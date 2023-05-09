@@ -4,8 +4,6 @@
   padding: 0 30px;
   display: flex;
   justify-content: center;
-  /* width: 80%; */
-  /* align-items: center; */
 }
 .details-dark {
   background-color: var(--black);
@@ -17,6 +15,7 @@
   justify-content: center;
   align-items: center;
   width: 80%;
+  margin: 15px 0;
 }
 .details-product img{
   background-color: var(--white);
@@ -25,10 +24,6 @@
   padding: 10px;
   max-height: 400px;
   margin-right: 50px;
-  /* max-width: 400px; */
-  /* height: 100%; */
-  /* width: 100%; */
-  /* object-fit: contain; */
 }
 
 .details-title, .details-price, .details-description-text {
@@ -60,4 +55,24 @@
 .details-info button:hover{
   transform: scale(1.1);
   transition: transform 0.5s ease;
+}
+
+
+
+/* TABLET */
+@media (max-width: 768px) {
+  .details-product {
+    flex-direction: column;
+    text-align: center;
+  }
+  .details-info {
+    margin-top: 15px;
+  }
+}
+
+/* PHONE */
+@media (max-width: 480px) {
+  .filter-container {
+    flex-wrap: wrap;
+  }
 }

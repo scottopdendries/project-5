@@ -7,16 +7,11 @@
   background-color: var(--black);
 }
 
-.filter-and-search {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-}
-
 .filter-container {
   display: flex;
+  justify-content: space-between;
   align-items: flex;
+  padding: 15px 0;
 }
 
 .filter-container button {
@@ -33,4 +28,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+
+
+/* TABLET */
+@media (max-width: 768px) {
+  .filter-container {
+    justify-content: center;
+  }
+}
+
+/* PHONE */
+@media (max-width: 480px) {
+  .filter-container {
+    flex-wrap: wrap;
+  }
 }

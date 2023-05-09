@@ -86,9 +86,7 @@
   background-color: var(--yellow);
   border: 2px solid var(--blue);
   width: 100px;
-  /* margin: 0 10px; */
   border-radius: 25px;
-  /* color:white; */
   font-size: 16px;
   margin-top: 10px;
 }
@@ -111,7 +109,6 @@
   left: 50%;
   margin-top: -50px;
   margin-left: -200px;
-  /* width: 400px; */
   max-width: 400px;
 }
 
@@ -139,4 +136,32 @@
 .modal-button:hover {
   transform: scale(1.1);
   transition: transform 0.5s ease;
+}
+
+
+
+/* TABLET */
+@media (max-width: 768px) {
+  .checkout-headers {
+    display: none;
+  }
+  .checkout-products {
+    padding-top: 10px;
+    margin-top: 20px;
+    border-radius: 25px 25px 0 0;
+  }
+  .checkout-product {
+    flex-direction: column;
+  }
+  .checkout-product p:nth-child(2),
+  .checkout-product p:nth-child(4) {
+    display: none;
+  }
+}
+
+/* PHONE */
+@media (max-width: 480px) {
+  .filter-container {
+    flex-wrap: wrap;
+  }
 }
