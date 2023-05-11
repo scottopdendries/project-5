@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 
 'react-router-dom'
 
@@ -11,7 +10,7 @@ import ContactUs from './pages/ContactUs/ContactUs'
 import Footer from './components/Footer/Footer'
 
 import ThemeContextProvider from './contexts/ThemeContext'
-import CartContextProvider, { CartContext } from './contexts/CartContext'
+import CartContextProvider from './contexts/CartContext'
 
 function App() {
 
