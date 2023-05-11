@@ -52,34 +52,6 @@ function HomePage() {
         })
         .catch(err => console.log(err));
     }
-    
-    // const changeFilter = (filter) => {
-    //   console.log('Button clicked:', filter);
-
-    //   let url;
-    //   switch (filter) {
-    //     case 'Electronics':
-    //       url = 'https://fakestoreapi.com/products/category/electronics';
-    //       break;
-    //     case 'Jewelery':
-    //       url = 'https://fakestoreapi.com/products/category/jewelery';
-    //       break;
-    //     case "Men's Clothing":
-    //       url = 'https://fakestoreapi.com/products/category/men%27s%20clothing';
-    //       break;
-    //     case "Women's Clothing":
-    //       url = 'https://fakestoreapi.com/products/category/women%27s%20clothing';
-    //       break;
-    //     default:
-    //       url = 'https://fakestoreapi.com/products';
-    //   }
-    //   axios.get(url)
-    //     .then(res => {
-    //       setProducts(res.data);
-    //       setFilter(filter);
-    //     })
-    //     .catch(err => console.log(err));
-    // }
 
   return(
     <div className={darkMode?"home-container home-dark" : "home-container"}>
